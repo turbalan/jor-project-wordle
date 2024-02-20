@@ -1,18 +1,19 @@
 import React from 'react';
 import { range } from '../../utils';
+import { checkGuess } from '../../game-helpers';
 
-function Guess({ guess }) {
+function Guess({ guess, answer }) {
 	let word = range(5);
-	if (guess) {
-		word = Array.from(guess);
-	} else {
-		word.forEach((_, index) => (word[index] = ''));
-	}
+	let correctGuess = checkGuess(guess, answer.answer);
+
 	return (
 		<p className="guess">
-			{word.map((letter) => (
-				<span className="cell" key={crypto.randomUUID()}>
-					{letter}
+			{word.map((_, index) => (
+				<span
+					className={`cell ${correctGuess ? correctGuess[index].status : ''}`}
+					key={crypto.randomUUID()}
+				>
+					{correctGuess ? correctGuess[index].letter : ''}
 				</span>
 			))}
 		</p>

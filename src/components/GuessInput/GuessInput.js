@@ -4,15 +4,13 @@ function GuessInput({ guessList, setGuestList }) {
 	const [guess, setGuess] = React.useState('');
 
 	const handleGuess = function (event) {
-		let formatGuess = event.target.value.toUpperCase();
-		setGuess(formatGuess);
+		setGuess(event.target.value.toUpperCase());
 	};
 
 	const handleSubmit = function (event) {
 		event.preventDefault();
-		const newGuessList = [...guessList, guess];
-		setGuestList(newGuessList);
-		console.log(guess);
+		if (guess.length < 5) return;
+		setGuestList([...guessList, guess]);
 		setGuess('');
 	};
 
