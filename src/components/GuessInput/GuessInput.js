@@ -1,16 +1,11 @@
 import React from 'react';
 
-function GuessInput({ guessList, setGuestList }) {
+function GuessInput({ handleSubmitGuess, gameStatus }) {
 	const [guess, setGuess] = React.useState('');
-
-	const handleGuess = function (event) {
-		setGuess(event.target.value.toUpperCase());
-	};
 
 	const handleSubmit = function (event) {
 		event.preventDefault();
-		if (guess.length < 5) return;
-		setGuestList([...guessList, guess]);
+		handleSubmitGuess(guess);
 		setGuess('');
 	};
 
@@ -20,9 +15,12 @@ function GuessInput({ guessList, setGuestList }) {
 			<input
 				id="guess-input"
 				type="text"
+				disabled={gameStatus !== 'running'}
 				pattern="[a-zA-Z]{5}"
 				value={guess}
-				onChange={handleGuess}
+				onChange={(event) => {
+					setGuess(event.target.value.toUpperCase());
+				}}
 			/>
 		</form>
 	);
