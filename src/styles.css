@@ -219,6 +219,31 @@ h1 {
   margin-bottom: 0.5em;
 }
 
+/* Reset Button by Pavel Kuts */
+.reset-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: blueviolet;
+  color: antiquewhite;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.75);
+  transition: 0.2s ease;
+}
+
+.reset-button:hover,
+.reset-button:focus {
+  margin-top: -1px;
+}
 /*
   Keyframe animations
 */

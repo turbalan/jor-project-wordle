@@ -2,7 +2,6 @@ import React from 'react';
 import GameBanner from '../GameBanner/GameBanner';
 
 function WinBanner({ guessList }) {
-	console.log(guessList);
 	const message = () => (
 		<>
 			<strong>Congratulations!</strong> Got it in{' '}
