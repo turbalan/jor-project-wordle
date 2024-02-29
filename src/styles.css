@@ -248,9 +248,11 @@ h1 {
 .keyboard {
   display: flex;
   gap: 0.5rem;
+  width: 200%;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  transform: translateX(-25%);
 }
 
 .keyboard-key {

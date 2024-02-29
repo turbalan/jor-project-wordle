@@ -1,17 +1,9 @@
 import React from 'react';
-import { checkGuess } from '../../game-helpers';
-
-const compareAlphabets = (checkedObject, originalObject) => {
-	checkedObject.forEach(function (item) {
-		let originalItem = originalObject.find(function (originalItem) {
-			return originalItem.letter === item.letter;
-		});
-		if (originalItem) {
-			originalItem.status = item.status;
-		}
-	});
-	return originalObject;
-};
+import {
+	checkGuess,
+	createKeyboard,
+	compareAlphabets,
+} from '../../game-helpers';
 
 function KeyboardKey({ letter }) {
 	return <div className={`keyboard-key ${letter.status}`}>{letter.letter}</div>;
@@ -27,16 +19,20 @@ function Keyboard({ guessList, answer }) {
 			.flat()
 	);
 
-	let alphabet = Array.from(Array(26)).map((e, i) => {
-		const localString = { letter: String.fromCharCode(i + 65), status: '' };
-		return localString;
-	});
+	const keyboardString = createKeyboard('qwertyuiopasdfghjklzxcvbnm');
 
-	const statusAlphabet = compareAlphabets(localGuesses, alphabet);
+	const statusAlphabet = compareAlphabets(localGuesses, keyboardString);
 
 	return (
 		<div className="keyboard">
 			{statusAlphabet.map((element) => {
+				if (element.letter === 'A' || element.letter === 'Z')
+					return (
+						<React.Fragment key={element.letter}>
+							<div style={{ width: '100%' }}></div>
+							<KeyboardKey letter={element} />
+						</React.Fragment>
+					);
 				return <KeyboardKey key={element.letter} letter={element} />;
 			})}
 		</div>
