@@ -244,6 +244,44 @@ h1 {
 .reset-button:focus {
   margin-top: -1px;
 }
+/* Keyboard */
+.keyboard {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.keyboard-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-gray-900);
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.keyboard-key.correct {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.keyboard-key.incorrect {
+  background-color: var(--color-gray-300);
+  color: white;
+}
+
+.keyboard-key.misplaced {
+  background-color: var(--color-warning);
+  color: white
+}
+
 /*
   Keyframe animations
 */

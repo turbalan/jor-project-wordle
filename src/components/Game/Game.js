@@ -8,6 +8,7 @@ import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import LoseBanner from '../LoseBanner/LoseBanner';
 import WinBanner from '../WinBanner/WinBanner';
 import ResetButton from '../ResetButton/ResetButton';
+import Keyboard from '../Keyboard/Keyboard';
 
 // Pick a random word on every pageload.
 // const answer = sample(WORDS);
@@ -42,9 +43,8 @@ function Game() {
 				handleSubmitGuess={handleSubmitGuess}
 				gameStatus={gameStatus}
 			/>
+			<Keyboard answer={answer} guessList={guessList} />
 
-			{gameStatus === 'lost' && <LoseBanner answer={answer} />}
-			{gameStatus === 'won' && <WinBanner guessList={guessList} />}
 			{gameStatus !== 'running' && (
 				<ResetButton
 					setAnswer={setAnswer}
@@ -53,6 +53,8 @@ function Game() {
 					handleCreateAnswer={handleCreateAnswer}
 				/>
 			)}
+			{gameStatus === 'lost' && <LoseBanner answer={answer} />}
+			{gameStatus === 'won' && <WinBanner guessList={guessList} />}
 		</>
 	);
 }
